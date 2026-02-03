@@ -1,0 +1,38 @@
+parameters:
+  terraformWorkingDirectory: 'terraform/sample'
+
+steps:
+  - checkout: self
+
+  - task: PowerShell@2
+    displayName: 'Install Terraform (Chocolatey)'
+    inputs:
+      targetType: 'inline'
+      script: |
+        choco --version
+        choco install terraform -y
+        terraform -version
+
+  - task: PowerShell@2
+    displayName: 'Terraform fmt (check)'
+    inputs:
+      targetType: 'inline'
+      script: |
+        cd ${{ parameters.terraformWorkingDirectory }}
+        terraform fmt -check -recursive
+
+  - task: PowerShell@2
+    displayName: 'Terraform init'
+    inputs:
+      targetType: 'inline'
+      script: |
+        cd ${{ parameters.terraformWorkingDirectory }}
+        terraform init -backend=false
+
+  - task: PowerShell@2
+    displayName: 'Terraform validate'
+    inputs:
+      targetType: 'inline'
+      script: |
+        cd ${{ parameters.terraformWorkingDirectory }}
+        terraform validate

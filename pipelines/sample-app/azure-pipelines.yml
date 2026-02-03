@@ -1,0 +1,23 @@
+trigger: none
+
+pr:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - terraform/*
+
+pool:
+  vmImage: 'windows-latest'
+
+stages:
+  - stage: Validate
+    displayName: 'Terraform Validation'
+    jobs:
+      - job: terraform_validate
+        displayName: 'Validate Terraform'
+        steps:
+          - template: ../templates/terraform-validate.yml
+            parameters:
+              terraformWorkingDirectory: 'terraform/sample'
