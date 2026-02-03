@@ -9,7 +9,7 @@ pr:
       - terraform/*
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'default'
 
 stages:
   - stage: Validate
