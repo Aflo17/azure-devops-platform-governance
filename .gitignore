@@ -1,0 +1,19 @@
+# Terraform working dir (providers, cache)
+.terraform/
+**/.terraform/*
+
+# Terraform state (never commit)
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+
+# Crash logs
+crash.log
+crash.*.log
+
+# CLI override files (optional but common)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
