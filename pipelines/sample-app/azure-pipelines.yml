@@ -9,7 +9,7 @@ pr:
       - terraform/*
 
 pool:
-  vmImage: 'default'
+  name: 'default'
 
 stages:
   - stage: Validate
