@@ -4,14 +4,10 @@ parameters:
 steps:
   - checkout: self
 
-  - task: PowerShell@2
-    displayName: 'Install Terraform (Chocolatey)'
+  - task: TerraformInstaller@1
+    displayName: 'Install Terraform'
     inputs:
-      targetType: 'inline'
-      script: |
-        choco --version
-        choco install terraform -y
-        terraform -version
+      terraformVersion: '1.6.6'
 
   - task: PowerShell@2
     displayName: 'Terraform fmt (check)'
