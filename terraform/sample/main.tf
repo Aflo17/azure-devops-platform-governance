@@ -10,15 +10,15 @@ terraform {
 }
 
 provider "azurerm" {
-  features {}                   
+  features {}
 }
 
 resource "azurerm_resource_group" "rg" {
-    name     = "rg-ado-gov-terraform-validation"
-    location = "East US"  
+  name     = "rg-ado-gov-terraform-validation"
+  location = "East US"
 
-    tags = {
-        owner   = "platform-governance"
-        purpose = "terraform-validation"
-    }
+  tags = {
+    owner   = "platform-governance"
+    purpose = "terraform-validation"
+  }
 }
